@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class NO {
+        constructor(value) {
+          this.value = value;
+        }
+      }
+
+      class Tree {
+        root = null;
+
+        insert(value) {
+          const newNo = new NO(value);
+          if (!this.root) {
+            this.root = newNo;
+            return;
+          }
+
+          let current = this.root;
+          while (true) {
+            if (current.value > value) {
+              if (!current.right) {
+                current.right = new NO(value);
+                return;
+              }
+              current = current.right;
+            } else {
+              if (!current.left) {
+                current.left = new NO(value);
+                return;
+              }
+              current = current.left;
+            }
+          }
+        }
+      }
+
+      const tes = new Tree();
+      tes.insert(7);
+      tes.insert(1);
+      tes.insert(2);
+      tes.insert(9);
+      console.log(tes);
+    </script>
+  </body>
+</html>
